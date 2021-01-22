@@ -1,0 +1,10 @@
+intelliJ 톰캣 로그 한글깨짐 방지
+
+1. ctrl+shift+a 를 누른 후 vm을 입력하고
+"edit Custom VM Options..." 를 선택
+
+2. 맨 마지막 줄에 다음 추가
+-Dfile.encoding=UTF-8
+
+
+3. intelliJ 재가동

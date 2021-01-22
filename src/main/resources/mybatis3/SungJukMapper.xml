@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sungjuk">
+    <insert id="insertSungJuk" statementType="PREPARED"
+            parameterType="qkfns.spring.mvc.vo.SungJukVO">
+        insert into sungjuk (name,kor,eng,mat, tot,mean,grd)
+        values (#{name},#{kor},#{eng},#{mat}, #{tot},#{mean},#{grd})
+    </insert>
+    <update id="updateSungJuk" statementType="PREPARED"
+            parameterType="qkfns.spring.mvc.vo.SungJukVO">
+        update sungjuk
+        set kor = #{kor},eng = #{eng},mat = #{mat},tot = #{tot},mean = #{mean},grd = #{grd},
+        regdate = sysdate() where sjno = #{sjno}
+    </update>
+    <delete id="deleteSungJuk" statementType="PREPARED"
+            parameterType="int">
+        delete from sungjuk where sjno = #{sjno}
+    </delete>
+    <select id="selectList" statementType="PREPARED"
+            resultType="qkfns.spring.mvc.vo.SungJukVO">
+        select sjno,name,kor,eng,mat,regdate from sungjuk order by sjno desc
+    </select>
+    <select id="selectOne" statementType="PREPARED"
+            parameterType="String"
+            resultType="qkfns.spring.mvc.vo.SungJukVO">
+        select * from sungjuk where sjno = #{sjno}
+    </select>
+</mapper>
